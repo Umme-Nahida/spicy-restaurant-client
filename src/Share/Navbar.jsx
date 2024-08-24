@@ -17,7 +17,7 @@ const Navbar = () => {
         <Link to="/contact">Contact Us</Link>
       </li>
       <li>
-        <Link to="/dashoboard">Dashboard</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
       <li>
         <Link to="/ourMenu">Our Menu</Link>
@@ -26,7 +26,7 @@ const Navbar = () => {
         <Link to="/order">Our Shop</Link>
       </li>
       <div className="indicator">
-        <span className="indicator-item badge badge-secondary">{cart.length}</span>
+        <span className="indicator-item badge badge-secondary">{cart?.length}</span>
         <button className="text-2xl mt-1"><FaCartPlus></FaCartPlus> </button>
       </div>
     </>
