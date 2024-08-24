@@ -1,14 +1,17 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLoaderData, useLocation } from 'react-router-dom';
 import Navbar from '../Share/Navbar';
 import Footer from '../Share/Footer/Footer';
 
 const Layout = () => {
+    const location = useLocation()
+    console.log(location)
+    const isHeaderFooter = location.pathname.includes('login') || location.pathname.includes('signup')
     return (
         <div>
-            <Navbar></Navbar>
+            {isHeaderFooter || <Navbar></Navbar>}
            <Outlet></Outlet> 
-           <Footer></Footer>
+           {isHeaderFooter || <Footer></Footer>}
         </div>
     );
 };

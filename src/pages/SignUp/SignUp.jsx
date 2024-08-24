@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form"
 import { AuthContext } from "../../Authentication/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import authenticationImg from '../../assets/others/authentication.png'
+import authentication1 from '../../assets/others/authentication2.png'
 
 const SignUp = () => {
   const {createUser}=useContext(AuthContext)
@@ -29,8 +31,12 @@ const SignUp = () => {
       }
       
   return (
-    <div className="bg-red-500 min-h-screen flex items-center justify-center">
-      <div className="max-w-md space-y-6 mt-16 rounded-lg border bg-white p-10 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
+    <div className="bg-red-500 min-h-screen flex items-center justify-center" style={{backgroundImage:`url(${authenticationImg})`}}>
+     <div className="flex items-center justify-center gap-x-10">
+      <img src={authentication1} alt="" className="w-1/2" />
+      {/* signup */}
+      <div className="w-1/2">
+      <div className="max-w-md space-y-6 my-16 rounded-lg border bg-white p-10 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
         <div className="flex flex-col space-y-1">
           <h3 className="text-3xl font-bold tracking-tight">Sign Up</h3>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -101,6 +107,8 @@ const SignUp = () => {
             </p>
         </div>
       </div>
+      </div>
+     </div>
     </div>
   );
 };
