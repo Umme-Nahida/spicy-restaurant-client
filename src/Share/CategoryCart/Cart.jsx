@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Cart = ({item}) => {
     // console.log(item)
+    const navigate =useNavigate()
+    const location = useLocation()
+    const {user}= useAuth()
+   
+
+    const handleAddtoCart=(id)=>{
+      if(user && user?.email){
+        console.log(id)
+      }else{
+        toast.error("you're not login User")
+        navigate('/login',{state:{from:location}})
+      }
+
+    }
   return (
     <div className="w-full max-w-[340px] space-y-3 rounded-xl bg-white p-4 shadow-lg dark:bg-[#18181B]">
       <div className="relative flex h-48 w-full justify-center lg:h-[260px]">
@@ -34,13 +51,11 @@ const Cart = ({item}) => {
         <p className="text-xs font-semibold text-gray-400 md:text-sm">
           {item?.recipe}
         </p>
-        <p>${item?.price}</p>
+        
       </div>
       <div className="flex flex-wrap items-center justify-between gap-2 text-sm md:text-base">
-        <button className="rounded-lg bg-[#49B2FF] px-4 py-2 font-semibold text-white duration-300 hover:scale-105 hover:bg-sky-600">
-          View Details
-        </button>
-        <button className="rounded-lg bg-gray-200 border-b-4 border-[#BB8506] px-4 py-2 font-semibold text-[#BB8506] duration-300 hover:scale-105 hover:bg-yellow-400">
+       
+        <button onClick={()=> handleAddtoCart(item._id)} className="rounded-lg bg-gray-200 border-b-4 border-[#BB8506] px-4 py-2 font-semibold text-[#BB8506] duration-300 hover:scale-105 hover:bg-yellow-400">
           Add to Cart
         </button>
       </div>
