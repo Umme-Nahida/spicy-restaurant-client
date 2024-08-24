@@ -22,7 +22,7 @@ const Dashboard = () => {
                     <li>
                         <NavLink to='/dashboard/allUsers'>All Users</NavLink>
                     </li>
-                    <div></div>
+                    <div className="divider"></div>
                 </ul>
                
             </div>
