@@ -20,7 +20,7 @@ const Dashboard = () => {
                         <NavLink to='/dashboard/manageBookings'>Manage Bookings</NavLink>
                     </li>
                     <li>
-                        <NavLink to='/dashboard/allUsers'>All Users</NavLink>
+                        <NavLink to='/dashboard/allUsers'>All User</NavLink>
                     </li>
                 </ul>
                
