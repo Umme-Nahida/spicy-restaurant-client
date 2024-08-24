@@ -8,7 +8,7 @@ const Dashboard = () => {
             <div className='bg-[#D1A054] w-64 min-h-screen'>
                 <ul className='menu space-y-2'>
                     <li>
-                        <NavLink to='/'>Profile</NavLink>
+                        <NavLink to='/dashboard'>Profile</NavLink>
                     </li>
                     <li>
                         <NavLink to='/dashboard/addItem'>Add Item</NavLink>
