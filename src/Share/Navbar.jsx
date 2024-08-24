@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import { FaCartPlus } from "react-icons/fa6";
 
 const Navbar = () => {
-  const { user,LogOut } = useContext(AuthContext);
+  const { user, LogOut } = useContext(AuthContext);
   const menu = (
     <>
       <li>
@@ -22,16 +23,19 @@ const Navbar = () => {
       <li>
         <Link to="/order">Our Shop</Link>
       </li>
+      <div className="indicator">
+        <span className="indicator-item badge badge-secondary">99+</span>
+        <button className="text-2xl mt-1"><FaCartPlus></FaCartPlus> </button>
+      </div>
     </>
   );
 
-  const handleLogOut = ()=>{
-    LogOut()
-      .then(()=>{
-        // user logOut successfylly
-        toast.success("user LogOut successfully")
-      })
-  }
+  const handleLogOut = () => {
+    LogOut().then(() => {
+      // user logOut successfylly
+      toast.success("user LogOut successfully");
+    });
+  };
   return (
     <div className="bg-[#FCCB05] bg-opacity-70 text-white fixed w-full z-[999] backdrop-blur-xl ">
       <div className="navbar max-w-screen-xl mx-auto">
@@ -88,13 +92,18 @@ const Navbar = () => {
                   <li>
                     <a className="justify-between">Profile</a>
                   </li>
-                  <li onClick={handleLogOut}><a className="justify-between">LogOut</a> </li>
+                  <li onClick={handleLogOut}>
+                    <a className="justify-between">LogOut</a>{" "}
+                  </li>
                 </>
               ) : (
                 // if no user available
                 <>
                   <li>
                     <Link to="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link to="/signup">Sign up</Link>
                   </li>
                 </>
               )}
