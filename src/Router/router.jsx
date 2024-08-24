@@ -6,6 +6,9 @@ import OurMenu from '../pages/OurMenu/OurMenu';
 import OurShop from '../pages/Order/OurShop/OurShop';
 import SignUp from '../pages/SignUp/SignUp';
 import Login from '../pages/Login/Login';
+import Dashboard from '../Dashboard/Dashboard/Dashboard';
+import Manageitem from '../Dashboard/ManageItem/Manageitem';
+import AddItem from '../Dashboard/AddItem/AddItem';
 
 const router = createBrowserRouter([
     {
@@ -34,6 +37,20 @@ const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path:'dashboard',
+      element:<Dashboard></Dashboard>,
+      children:[
+        {
+          path:'manageItem',
+          element:<Manageitem></Manageitem>
+        },
+        {
+          path:'addItem',
+          element:<AddItem></AddItem>
+        },
+      ]
+    }
   ]);
 
 export default router;
