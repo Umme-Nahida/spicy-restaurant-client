@@ -2,17 +2,36 @@ import React, { useContext } from "react";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useCartItem from "../../Hooks/useCartItem";
 
 const Cart = ({item}) => {
-    // console.log(item)
+    const [,refetch]=useCartItem()
+    
     const navigate =useNavigate()
+    const axiosSecure = useAxiosSecure()
     const location = useLocation()
     const {user}= useAuth()
-   
-
+    
     const handleAddtoCart=(id)=>{
       if(user && user?.email){
-        console.log(id)
+        const menuItems={
+          menuId:item._id,
+          customerEmail:user?.email,
+          name:item.name,
+          img:item.image,
+          price:item.price
+        }
+        console.log(menuItems)
+        axiosSecure.post('/addToCart',menuItems)
+        .then(res=>{
+          console.log(res.data)
+          if(res.data.insertedId){
+            toast.success('add to cart successfully')
+            refetch()
+          }
+        })
+
       }else{
         toast.error("you're not login User")
         navigate('/login',{state:{from:location}})
