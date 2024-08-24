@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import { FaCartPlus } from "react-icons/fa6";
+import useCartItem from "../Hooks/useCartItem";
 
 const Navbar = () => {
   const { user, LogOut } = useContext(AuthContext);
+  const [cart]=useCartItem()
   const menu = (
     <>
       <li>
@@ -24,7 +26,7 @@ const Navbar = () => {
         <Link to="/order">Our Shop</Link>
       </li>
       <div className="indicator">
-        <span className="indicator-item badge badge-secondary">99+</span>
+        <span className="indicator-item badge badge-secondary">{cart.length}</span>
         <button className="text-2xl mt-1"><FaCartPlus></FaCartPlus> </button>
       </div>
     </>
