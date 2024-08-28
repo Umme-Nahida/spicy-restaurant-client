@@ -11,7 +11,7 @@ const Chef = () => {
            {/* cart items */}
            <div className='grid grid-cols-1 lg:grid-cols-3 justify-items-center px-20'> 
             {
-               menus.slice(0,3).map(item=>(
+               menus?.slice(0,3).map(item=>(
                 <Cart
                 key={item._id}
                 item={item}
