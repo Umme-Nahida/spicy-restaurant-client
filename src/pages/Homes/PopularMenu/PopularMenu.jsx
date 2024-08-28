@@ -11,7 +11,7 @@ const PopularMenu = () => {
             {/* display menu items */}
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
                {
-                menus.slice(0,6).map(item=>(
+                menus?.slice(0,6)?.map(item=>(
                     <MenuCart
                     item={item}
                     key={item._id}
